@@ -12,10 +12,10 @@ HAVING COUNT(id) > 1
 
 -- Identify row_id number for duplicated records
 SELECT *
-FROM (SELECT row_id, id,
-	         ROW_NUMBER() OVER(PARTITION BY id
-						 ORDER BY id) AS row_num
-  		FROM us_household_income) AS duplicates
+  FROM (SELECT row_id, id,
+	       ROW_NUMBER() OVER(PARTITION BY id
+			         ORDER BY id) AS row_num
+  	  FROM us_household_income) AS duplicates
 WHERE row_num > 1
 ;
 
@@ -23,13 +23,13 @@ WHERE row_num > 1
 -- Remove duplicated records
 DELETE FROM us_household_income
  WHERE row_id IN (SELECT row_id
- 	 				FROM (SELECT row_id, id,
-	           					 ROW_NUMBER() OVER(PARTITION BY id
-									 			   ORDER BY id) AS row_num
-  		  					FROM us_household_income
-	    				  ) AS duplicates
-				   WHERE row_num > 1
-				  )
+ 	 	    FROM (SELECT row_id, id,
+	           		 ROW_NUMBER() OVER(PARTITION BY id
+						   ORDER BY id) AS row_num
+  		  	    FROM us_household_income
+	    		  ) AS duplicates
+		   WHERE row_num > 1
+	          )
 ;
 
 -- Evaluate for inconsistencies in state_name
@@ -42,12 +42,12 @@ SELECT DISTINCT state_name AS unique_state
 -- Standardize inconsistent values in state_name
 UPDATE us_household_income
    SET state_name = 'Georgia'
-  WHERE state_name = 'georia'
+ WHERE state_name = 'georia'
 ;
 
 UPDATE us_household_income
    SET state_name = 'Alabama'
-  WHERE state_name = 'alabama'
+ WHERE state_name = 'alabama'
 ;
 
 
@@ -76,7 +76,7 @@ UPDATE us_household_income
 
 -- Evaluate for inconsistencies in type 
 SELECT type,
-	   COUNT(type) AS type_tally
+       COUNT(type) AS type_tally
   FROM us_household_income
  GROUP BY type
  ORDER BY type
@@ -103,7 +103,7 @@ UPDATE us_household_income
 -- Evaluate for inconsistencies in a_land and a_water
 SELECT a_land, a_water
   FROM us_household_income
-   WHERE (a_land = 0 OR a_land IS NULL)
+ WHERE (a_land = 0 OR a_land IS NULL)
 ;
 
 SELECT a_land, a_water
