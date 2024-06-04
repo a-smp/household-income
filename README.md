@@ -10,4 +10,4 @@ Provide a comprehensive understanding of the economic landscape across the Unite
 - The term "Non-Institutional Population" encompasses all U.S. civilians not residing in institutional group quarters facilities. This includes places like correctional institutions, juvenile facilities, skilled nursing facilities, and other long-term care living arrangements. For more clarity, feel free to explore further details on this definition.
 
 ## ADDITIONAL LINKS
-[Tableau Project](https://public.tableau.com/app/profile/alan.sampedro/viz/HouseholdIncomeandEmploymentintheUS/Story1)
+[Tableau Project](https://public.tableau.com/views/HouseholdIncomeandEmploymentintheUS/Story1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link)
